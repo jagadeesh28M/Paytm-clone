@@ -1,7 +1,6 @@
 const mongoose = require('mongoose');
-const { Schema } = require('zod');
-
-const userSchema = new Schema({
+mongoose.connect("mongodb+srv://jagadeesh28:pass@cluster0.f5bsn.mongodb.net/paytm")
+const userSchema = new mongoose.Schema({
     username : String,
     firstname : String,
     lastname : String,
