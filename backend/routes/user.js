@@ -13,10 +13,6 @@ const signupSchema = zod.object({
     lastName : zod.string(),
 });
 
-const signinSchema = zod.object({
-    username : zod.string().email(),
-    password: zod.string()
-})
 
 router.post('/signup',async(req,res)=>{
     const body = req.body;
@@ -40,7 +36,7 @@ router.post('/signup',async(req,res)=>{
         userId : user._id,
         balance: 1 + Math.random()*10000
     })
-
+    
     const token = jwt.sign({
         userId : user._id
     },JWT_SECRECT)
@@ -48,6 +44,11 @@ router.post('/signup',async(req,res)=>{
         message: "User created successfully",
 	    token: token 
     })
+})
+
+const signinSchema = zod.object({
+    username : zod.string().email(),
+    password: zod.string()
 })
 
 router.post('/signin',async(req,res)=>{
